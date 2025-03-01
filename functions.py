@@ -1,6 +1,8 @@
-import os
 import string
 from collections import Counter
+import re
+
+contractions = { "re": "are", "ll": "will", "t": "not", "m": "am" }
 
 def readFile(relativePath):
     try:
@@ -28,7 +30,10 @@ def getWordCount(fileContent, withContractions = True):
 
 def removeContractions(fileContent):
     apostrophe_translator = str.maketrans("'", " ")
-    return fileContent.translate(apostrophe_translator)
+    without_contractions = fileContent.translate(apostrophe_translator)
+    for key, val in contractions.items():
+        without_contractions = re.sub(rf'\b{key}\b', val, without_contractions)
+    return without_contractions
 
 def writeToFile(relativePath, text):
     with open(relativePath, "a") as file:
