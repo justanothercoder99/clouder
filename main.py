@@ -10,8 +10,11 @@ if_file = readFile("IF-1.txt")
 always_remember = readFile("AlwaysRememberUsThisWay-1.txt")
 
 if_file_counter = getWordCount(if_file)
+printToConsoleAndFile(output_file_path, f"Words in IF: {sum(if_file_counter.values())}")
 always_remember_with_contractions_counter = getWordCount(always_remember)
+printToConsoleAndFile(output_file_path, f"Words in AlwaysRememberUsThisWay with contractions: {sum(always_remember_with_contractions_counter.values())}")
 always_remember_no_contractions_counter = getWordCount(always_remember, withContractions=False)
+printToConsoleAndFile(output_file_path, f"Words in AlwaysRememberUsThisWay after separating contractions: {sum(always_remember_no_contractions_counter.values())}")
 
 total_words = sum(if_file_counter.values()) + sum(always_remember_with_contractions_counter.values())
 printToConsoleAndFile(output_file_path, f"Total number of words: {total_words}")
