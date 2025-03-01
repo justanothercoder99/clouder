@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: clouder-deployment
+spec:
+  replicas: 2  # Number of replicas you want to run
+  selector:
+    matchLabels:
+      app: clouder
+  template:
+    metadata:
+      labels:
+        app: clouder
+    spec:
+      containers:
+      - name: clouder-container
+        image: aneeshd99/clouder:latest
+        ports:
+        - containerPort: 8080
