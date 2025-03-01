@@ -24,8 +24,8 @@ def getWords(fileContent, withContractions = True):
 
 def getWordCount(fileContent, withContractions = True):
     words = getWords(fileContent, withContractions)
-    for word in words:
-        word = word.lower()
+    for i in range(len(words)):
+        words[i] = words[i].lower()
     return Counter(words)
 
 def removeContractions(fileContent):
@@ -37,7 +37,7 @@ def removeContractions(fileContent):
 
 def writeToFile(relativePath, text):
     with open(relativePath, "a") as file:
-        file.write(text)
+        file.write(text + "\n")
 
 def printToConsoleAndFile(path, text):
     print(text, end="\n")
