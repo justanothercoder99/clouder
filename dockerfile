@@ -15,5 +15,4 @@ COPY *.py /home/data
 COPY IF-1.txt /home/data
 COPY AlwaysRememberUsThisWay-1.txt /home/data
 
-CMD ["python3", "main.py"]
-CMD ["tail", "-f", "/dev/null"]
+CMD ["sh", "-c", "python main.py & tail -f /dev/null"]
